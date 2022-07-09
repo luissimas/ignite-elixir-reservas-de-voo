@@ -19,6 +19,4 @@ defmodule Flightex.Users.User do
   def build(_name, _email, cpf) when not is_bitstring(cpf) do
     {:error, "Cpf must be a String"}
   end
-
-  def build(_name, _email, _cpf), do: {:error, "Invalid Params"}
 end

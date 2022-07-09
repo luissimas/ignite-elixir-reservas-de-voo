@@ -31,5 +31,31 @@ defmodule Flightex.Users.UserTest do
 
       assert response == expected_response
     end
+
+    test "when name is not a string" do
+      response =
+        User.build(
+          :Jp,
+          "jp@banana.com",
+          "11225005500"
+        )
+
+      expected_response = {:error, "Name must be a String"}
+
+      assert response == expected_response
+    end
+
+    test "when email is not a string" do
+      response =
+        User.build(
+          "Jp",
+          nil,
+          "11225005500"
+        )
+
+      expected_response = {:error, "Email must be a String"}
+
+      assert response == expected_response
+    end
   end
 end
